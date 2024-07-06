@@ -9,6 +9,7 @@ import { ApiResponse } from "../utilities/apiResponse.js";
 
 import { newOTP } from "../utilities/otpGenerator.js";
 import { sendMail } from "../utilities/mailSender.js";
+import { HttpStatusCode } from "axios";
 
 function validateEmail(email) {
   let pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -196,8 +197,8 @@ const userLogin = asyncHandlerFunction(async (req, res) => {
   }
  
   const options = {
-    httpOnly: true,
-    // secure:true
+    httpOnly:false,
+    secure:process.env.NODE_ENV==='production',
   };
 
   sendMail("user is logged in ", email, "LogIn");
@@ -229,7 +230,7 @@ const userLogout = asyncHandlerFunction(async (req, res) => {
 
   const options = {
     httpOnly: true,
-    // secure:true
+    secure:process.env.NODE_ENV==='production'
   };
 
   return res
