@@ -11,12 +11,17 @@ import { trackingRoute } from "./routes/tracking.route.js";
 
 const app = express();
 
-app.use(
-  cors({
-    origin: [process.env.CORS_ORIGIN],
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: 'https://6688de94101d2c4b74ef223f--roaring-begonia-1099e3.netlify.app',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true
+}));
+
+app.options('*', cors({
+  origin: 'https://6688de94101d2c4b74ef223f--roaring-begonia-1099e3.netlify.app',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true
+}));
 
 app.use(cookieParser());
 app.use(
@@ -24,15 +29,17 @@ app.use(
     limit: "200KB",
   })
 );
+
+
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/api/v1/user", router);
-app.use("/api/v1/profile", profileRoute);
-app.use("/api/v1/address", addressRoute);
-app.use("/api/v1/product", productRoute);
-app.use("/api/v1/category", categoryRoute);
-app.use("/api/v1/tracking", trackingRoute);
+app.use(`/api/v1/user`, router);
+app.use(`/api/v1/profile`, profileRoute);
+app.use(`/api/v1/address`, addressRoute);
+app.use(`/api/v1/product`, productRoute);
+app.use(`/api/v1/category`, categoryRoute);
+app.use(`/api/v1/tracking`, trackingRoute);
 
 app.use("/api/v1/payment", paymentRoute);
 
