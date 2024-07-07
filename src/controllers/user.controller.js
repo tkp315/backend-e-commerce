@@ -121,6 +121,7 @@ const userRegistration = asyncHandlerFunction(async (req, res) => {
   
   const profilePhotoLocalStorage = await req.file?.path;
  
+  console.log(req.file,"This is profile photo ");
   const profilePhoto = await uploadOnCloudinary(profilePhotoLocalStorage);
   console.log("uploded on cloudinary",profilePhoto);
 
