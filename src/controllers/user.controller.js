@@ -199,6 +199,7 @@ const userLogin = asyncHandlerFunction(async (req, res) => {
   const options = {
     httpOnly:true,
     secure:process.env.NODE_ENV==='production',
+    sameSite:'none'
   };
 
   sendMail("user is logged in ", email, "LogIn");
@@ -230,7 +231,8 @@ const userLogout = asyncHandlerFunction(async (req, res) => {
 
   const options = {
     httpOnly: true,
-    secure:process.env.NODE_ENV==='production'
+    secure:process.env.NODE_ENV==='production',
+    sameSite: 'none',
   };
 
   return res
