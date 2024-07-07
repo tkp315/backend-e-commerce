@@ -26,7 +26,9 @@ const uploadOnCloudinary = async function (localFilePath) {
     console.log("File is uploaded on cloudinary :", response.secure_url);
     return response;
   } catch (error) {
-    fs.unlinkSync(localFilePath);
+    if (fs.existsSync(localFilePath)) {
+      await fs.promises.unlink(localFilePath);
+    }
     console.log(
       "file is not uploaded on Cloudinary and deleted from local storage also",
       error
