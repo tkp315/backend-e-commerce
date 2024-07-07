@@ -13,7 +13,6 @@ const app = express();
 
 app.use(cors({
   origin: 'https://6688de94101d2c4b74ef223f--roaring-begonia-1099e3.netlify.app',
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true
 }));
 
@@ -22,6 +21,7 @@ app.options('*', cors({
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true
 }));
+
 
 app.use(cookieParser());
 app.use(

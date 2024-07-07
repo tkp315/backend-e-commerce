@@ -197,15 +197,15 @@ const userLogin = asyncHandlerFunction(async (req, res) => {
   }
  
   const options = {
-    // httpOnly:true,
+    httpOnly:true,
     secure:process.env.NODE_ENV==='production',
   };
 
   sendMail("user is logged in ", email, "LogIn");
   return res
     .status(200)
-    .cookie("accessToken", accessToken)
-    .cookie("refreshToken", refreshToken)
+    .cookie("accessToken", accessToken,options)
+    .cookie("refreshToken", refreshToken,options)
     .json(
       new ApiResponse(
         200,
@@ -235,8 +235,8 @@ const userLogout = asyncHandlerFunction(async (req, res) => {
 
   return res
     .status(200)
-    .clearCookie("accessToken")
-    .clearCookie("refreshToken")
+    .clearCookie("accessToken",options)
+    .clearCookie("refreshToken",options)
     .json(new ApiResponse(200, {}, "User logged out", true));
 });
 
