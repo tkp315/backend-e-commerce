@@ -19,6 +19,7 @@ const uploadOnCloudinary = async function (localFilePath) {
       folder: process.env.FOLDER,
       use_filename: true,
       secure: true,
+      resource_type:'auto',
     });
 
     fs.unlinkSync(localFilePath);
