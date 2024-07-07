@@ -135,7 +135,7 @@ const userRegistration = asyncHandlerFunction(async (req, res) => {
     email,
     password,
     phone_No,
-    profilePhoto: profilePhoto ? profilePhoto.url : "",
+    profilePhoto: profilePhoto ? profilePhoto.secure_url : "",
     role,
     otp,
   });
