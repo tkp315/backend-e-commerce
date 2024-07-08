@@ -8,6 +8,7 @@ import { productRoute } from "./routes/product.route.js";
 import { paymentRoute } from "./routes/payment.route.js";
 import { categoryRoute } from "./routes/category.route.js";
 import { trackingRoute } from "./routes/tracking.route.js";
+import multer from "multer";
 
 const app = express();
 
@@ -30,6 +31,7 @@ app.use(
   })
 );
 
+app.use(multer())
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
