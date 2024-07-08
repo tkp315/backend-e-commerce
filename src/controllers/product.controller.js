@@ -20,7 +20,7 @@ const createProduct = asyncHandlerFunction(async (req, res) => {
     tags,
     subCatId,
   } = req.body;
-
+  console.log("This is object of files",req.files);
   const userId = req.user._id;
   const uid = new mongoose.Types.ObjectId(userId);
 
