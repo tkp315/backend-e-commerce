@@ -31,7 +31,7 @@ app.use(
   })
 );
 
-app.use(multer())
+
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
