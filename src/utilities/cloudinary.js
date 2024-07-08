@@ -15,7 +15,7 @@ const uploadOnCloudinary = async function (localFilePath) {
       return null;
     }
 
-    // Ensure the file exists before attempting upload
+   console.log("this is file path",localFilePath);
     if (!fs.existsSync(localFilePath)) {
       console.log("File not found at path:", localFilePath);
       return null;
