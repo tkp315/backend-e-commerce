@@ -119,16 +119,16 @@ const userRegistration = asyncHandlerFunction(async (req, res) => {
     } 
   }
   
-  // const profilePhotoLocalStorage = await req.file?.path;
-  // console.log(req.file,'this is req.file object')
+  const profilePhotoLocalStorage = await req.file?.path;
+  console.log(req.file,'this is req.file object')
  
-  // console.log(req.file,"This is profile photo ");
-  // const profilePhoto = await uploadOnCloudinary(profilePhotoLocalStorage);
-  // console.log("uploded on cloudinary",profilePhoto);
+  console.log(req.file,"This is profile photo ");
+  const profilePhoto = await uploadOnCloudinary(profilePhotoLocalStorage);
+  console.log("uploded on cloudinary",profilePhoto);
 
-  // if (!profilePhoto) {
-  //   throw new ApiError(400, "profile photo is not uploaded on cloudinary");
-  // }
+  if (!profilePhoto) {
+    throw new ApiError(400, "profile photo is not uploaded on cloudinary");
+  }
 
   
   const user = await User.create({
@@ -137,7 +137,7 @@ const userRegistration = asyncHandlerFunction(async (req, res) => {
     email,
     password,
     phone_No,
-    // profilePhoto: profilePhoto ? profilePhoto.secure_url : "",
+    profilePhoto: profilePhoto ? profilePhoto.secure_url : "",
     role,
     otp,
   });

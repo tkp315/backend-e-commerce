@@ -8,7 +8,7 @@ import { getOrderList } from "../controllers/userLists.js";
 
 const router = Router();
 
-router.route("/register").post(userRegistration);
+router.route("/register").post(upload.single("profilePhoto"),userRegistration);
 router.route("/sendOTP").post(sendOTP);
 router.route("/login").post(userLogin);
 router.route("/logout").post( verifyJWT, userLogout);

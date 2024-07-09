@@ -30,14 +30,8 @@ productRoute.route("/add-product").post(
         {name:"productImages",maxCount:5},
         {name:"thumbnail",maxCount:1}
     ]
-    ) ,(req, res) => {
-        try {
-          res.json({ message: 'Files uploaded successfully!' });
-        } catch (error) {
-          console.error('Error handling file upload:', error);
-          res.status(400).send('Error uploading files.');
-        }
-      })
+    ) ,createProduct
+      )
      
 
 
