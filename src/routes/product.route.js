@@ -22,6 +22,27 @@ productRoute.route("/add-product").post(
 productRoute.route("/get-products").post(verifyJWT,isSeller,getProducts)
 export{productRoute};
 
+productRoute.route("/add-product").post(
+    verifyJWT,
+   
+    upload.fields(
+    [
+        {name:"productImages",maxCount:5},
+        {name:"thumbnail",maxCount:1}
+    ]
+    ) ,(req, res) => {
+        try {
+          res.json({ message: 'Files uploaded successfully!' });
+        } catch (error) {
+          console.error('Error handling file upload:', error);
+          res.status(400).send('Error uploading files.');
+        }
+      })
+     
+
+
+
+
 productRoute.route("/get-all-products").post(verifyJWT,allProducts)
 
 productRoute.route("/details").post(verifyJWT,productDetails)
