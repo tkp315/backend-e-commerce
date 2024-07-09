@@ -48,7 +48,7 @@ const createProduct = asyncHandlerFunction(async (req, res) => {
     throw new ApiError(401, "photos are not found in local storage");
   }
   if(req.files|| req.files.length!==0)console.log("photos are found in local storage");
-  const thumbnailLocalStorage = req.files.thumbnail[0]?.path;
+  const thumbnailLocalStorage = await req.files.thumbnail[0]?.path;
   
   if (!thumbnailLocalStorage) {
     throw new ApiError(401, "Thumbnail not found");
