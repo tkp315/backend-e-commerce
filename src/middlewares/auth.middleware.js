@@ -24,12 +24,14 @@ const verifyJWT = asyncHandlerFunction(async (req, res, next) => {
     );
 
     if (!user) {
-      // redirect("http://localhost:3000/login")
       
       throw new ApiError(401, "Invalid Access Token");
     }
 
     req.user = user; 
+    if(!req.user){
+      res.redirect("/api/v1/user/login");
+    }
 
     next();
 
